@@ -31,3 +31,7 @@ const newBook = req.body.newBook;
     .catch((err) => {
       console.log("Err " + err);
     });
+
+
+"test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
