@@ -43,8 +43,8 @@ app.get("/books",(req,res)=>{
      })
 })
 
-app.get('/book',(req,res)=>{
-  Book.findById("60838043e244aa5eec8114e0")
+app.get('/:id',(req,res)=>{
+  Book.findById(req.params.id)
     .then((result)=>{
       res.json(result)
     })
@@ -52,6 +52,17 @@ app.get('/book',(req,res)=>{
       res.status(400).json(err)
     })
 })
+
+app.delete('/:id',(req,res)=>{
+  Book.findByIdAndDelete(req.params.id)
+    .then((result)=>{
+      res.json(result)
+    })
+    .then(err=>{
+      res.status(400).json(err)
+    })
+})
+
 
 app.post("/add", (req, res) => {
   console.log(req.body);
