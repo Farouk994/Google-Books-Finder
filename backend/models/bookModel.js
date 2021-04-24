@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-    book : {
+    title : {
         type : String,
         required : true,
         trim : true,
@@ -13,6 +13,6 @@ const bookSchema = new Schema({
     timestamps : true,
 });
 
-const Books = mongoose.model('Books', bookSchema);
+const Book = mongoose.model('books', bookSchema);
 
-module.export = User;
+module.exports = Book;
