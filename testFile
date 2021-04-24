@@ -1,0 +1,33 @@
+app.get("/add", (req, res) => {
+  const book = new Book({
+    title: "Subtle Ways of not giving a fuck",
+  });
+  console.log(book);
+  book
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log("Err " + err);
+    });
+});
+
+app.use('/bookRoutes',booksRouter);
+
+
+
+
+
+
+const newBook = req.body.newBook;
+  const book = new Book({ title : newBook });
+ 
+  book
+    .save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log("Err " + err);
+    });
