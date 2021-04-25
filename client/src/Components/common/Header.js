@@ -3,34 +3,26 @@ import React from "react";
 export const Header = () => {
   return (
     <div>
-      <div>
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">
-              Active
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              Link
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              Link
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="/"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              Disabled
-            </a>
-          </li>
-        </ul>
+      <div align = "center">
+        <nav className="navbar navbar-dark bg-dark text-white" >
+          <ul className="nav justify-content-center" >
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/Collections">
+                Create Collection
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/MyCollections">
+                My Collections
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
       <br></br>
     </div>

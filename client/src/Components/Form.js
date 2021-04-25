@@ -26,7 +26,6 @@ class Form extends React.Component {
             value={this.state.userName}
             onChange={(event) => this.setState({ books: event.target.value })}
             placeholder="Search Books"
-            // className="form-control"
             id="formGroupExampleInput"
             required
           />
