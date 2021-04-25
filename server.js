@@ -6,7 +6,9 @@ mongoose.set("useCreateIndex", true);
 const cors = require("cors");
 const app = express();
 
+// Models
 const Book = require("./backend/models/bookModel");
+const User = require("./backend/models/userModel");
 console.log(Book);
 
 const booksRouter = require("./routes/bookRoutes");
@@ -22,9 +24,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// const =
-// "mongodb+srv://farouk:kisuule@cluster0.idbjf.mongodb.net/Google-Books-Finder?retryWrites=true&w=majority";
-// process.env.ATLAS_URI;
+// Mongoose Connection on Local Robo3T
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/google-books",
   {
@@ -47,6 +47,30 @@ app.get("/books", (req, res) => {
       res.status(400).json("Error " + err);
     });
 });
+
+app.get("/user", (req, res) => {
+  User.find()
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.status(400).json("Error " + err);
+    });
+});
+
+app.post("/addUser", (req, res) => {
+  console.log(req.body);
+  const newUser = new User(req.body);
+  newUser
+    .save()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.status(400).json("Err " + err);
+    });
+});
+
 
 app.get("/:id", (req, res) => {
   Book.findById(req.params.id)
