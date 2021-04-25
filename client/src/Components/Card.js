@@ -1,25 +1,37 @@
 import React from "react";
-import { render } from "react-dom";
 
 class Card extends React.Component {
   render() {
     const profile = this.props;
     return (
-      <div className="github-profile container" id="newBook">
-        <img src={profile.imageLinks.thumbnail} alt="books"></img>
-        <div className="info">
-          <div className="name">{profile.title}</div>
-          <div className="company">{profile.authors}</div>
-          <div className="company">{profile.publishedDate}</div>
-          <div className="company">
-            <em>{profile.description}</em>
+      <div>
+        <div class="card mb-3" style={{ width: "540px" }}>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src={profile.imageLinks.thumbnail} alt="google-books"></img>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{profile.title}</h5>
+                <h6>{profile.authors}</h6>
+                <p class="card-text">{profile.subtitle}</p>
+                <p class="card-text">
+                  <small class="text-muted">{profile.publishedDate}</small>
+                </p>
+              </div>
+            </div>
           </div>
-          <button>Add Book</button>
-          <button>Remove Book</button>
           <br></br>
-          <hr></hr>
-          <br></br>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success">
+              Add Book
+            </button>
+            <button type="button" class="btn btn-danger">
+              Remove Book
+            </button>
+          </div>
         </div>
+        <br></br>
       </div>
     );
   }
