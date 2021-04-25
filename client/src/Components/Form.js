@@ -5,7 +5,8 @@ class Form extends React.Component {
   state = { books: "" };
   handleSubmit = async (event) => {
     event.preventDefault();
-    const APIkey = process.env.APIkey || "AIzaSyCS4ROvsyMQFPbHWyf2w4iRLivX36cohSQ"
+    const APIkey =
+      process.env.APIkey || "AIzaSyCS4ROvsyMQFPbHWyf2w4iRLivX36cohSQ";
     const resp = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${this.state.books}&key=${APIkey}`
     );
@@ -18,18 +19,20 @@ class Form extends React.Component {
   };
   render() {
     return (
-      <div>
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.userName}
-          onChange={(event) => this.setState({ books: event.target.value })}
-          placeholder="GitHub username"
-          required
-        />
-        <button id="newBook">Add Book</button>
-      </form>
-      <br></br>
+      <div align = "center">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.userName}
+            onChange={(event) => this.setState({ books: event.target.value })}
+            placeholder="Search Books"
+            // className="form-control"
+            id="formGroupExampleInput"
+            required
+          />
+          <button className ="btn btn-primary"id="newBook">Search</button>
+        </form>
+        <br></br>
       </div>
     );
   }
