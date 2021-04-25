@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Farouk994/Google-Books-Finder#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "concurrently": "^6.0.2",
     "cors": "^2.8.5",

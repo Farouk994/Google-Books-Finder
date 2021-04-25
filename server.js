@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-mongoose.set('useCreateIndex', true);
+mongoose.set("useCreateIndex", true);
 const cors = require("cors");
 const app = express();
 
@@ -13,6 +13,8 @@ const booksRouter = require("./routes/bookRoutes");
 
 const PORT = process.env.PORT || 3001;
 
+app.use(morgan());
+
 //Middleware
 app.use(cors());
 app.use(express.json());
@@ -21,59 +23,62 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // const =
-  // "mongodb+srv://farouk:kisuule@cluster0.idbjf.mongodb.net/Google-Books-Finder?retryWrites=true&w=majority";
+// "mongodb+srv://farouk:kisuule@cluster0.idbjf.mongodb.net/Google-Books-Finder?retryWrites=true&w=majority";
 // process.env.ATLAS_URI;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/google-books", {
-  useNewUrlParser: true,
-  useCreateindex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/google-books",
+  {
+    useNewUrlParser: true,
+    useCreateindex: true,
+    useUnifiedTopology: true,
+  }
+);
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Mongo Database has been connected");
 });
 
-app.get("/books",(req,res)=>{
+app.get("/books", (req, res) => {
   Book.find()
-     .then(books => {
-       res.json(books)
-     })
-     .catch(err=>{
-       res.status(400).json('Error ' + err)
-     })
-})
+    .then((books) => {
+      res.json(books);
+    })
+    .catch((err) => {
+      res.status(400).json("Error " + err);
+    });
+});
 
-app.get('/:id',(req,res)=>{
+app.get("/:id", (req, res) => {
   Book.findById(req.params.id)
-    .then((result)=>{
-      res.json(result)
+    .then((result) => {
+      res.json(result);
     })
-    .then(err=>{
-      res.status(400).json(err)
-    })
-})
+    .then((err) => {
+      res.status(400).json(err);
+    });
+});
 
-app.delete('/:id',(req,res)=>{
+app.delete("/:id", (req, res) => {
   Book.findByIdAndDelete(req.params.id)
-    .then((result)=>{
-      res.json(result)
+    .then((result) => {
+      res.json(result);
     })
-    .then(err=>{
-      res.status(400).json(err)
-    })
-})
-
+    .then((err) => {
+      res.status(400).json(err);
+    });
+});
 
 app.post("/add", (req, res) => {
   console.log(req.body);
   const newBook = new Book(req.body);
-  newBook.save()
-     .then(result=>{
-       res.json(result)
-     })
-     .catch(err=>{
-       res.status(400).json('Err ' + err)
-     })
+  newBook
+    .save()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.status(400).json("Err " + err);
+    });
 });
 
 app.listen(PORT, () => {

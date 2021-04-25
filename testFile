@@ -35,3 +35,33 @@ const newBook = req.body.newBook;
 
 "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+
+
+
+
+
+
+
+    class Card extends React.Component {
+  render() {
+    const profile = this.props;
+    return (
+      <div className="github-profile" id="newBook">
+        <img src={profile.imageLinks.thumbnail} alt="books"></img>
+        <div className="info">
+          <div className="name">{profile.title}</div>
+          <div className="company">{profile.authors}</div>
+          <div className="company">{profile.publishedDate}</div>
+          <div className="company">
+            <em>{profile.description}</em>
+          </div>
+          <button>Add Book</button>
+          <button>Remove Book</button>
+          <br></br>
+          <hr></hr>
+          <br></br>
+        </div>
+      </div>
+    );
+  }
+}
