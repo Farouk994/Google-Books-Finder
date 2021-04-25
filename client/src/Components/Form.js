@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import React from "react";
 
@@ -6,8 +5,9 @@ class Form extends React.Component {
   state = { books: "" };
   handleSubmit = async (event) => {
     event.preventDefault();
+    const APIkey = process.env.APIkey || "AIzaSyCS4ROvsyMQFPbHWyf2w4iRLivX36cohSQ"
     const resp = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${this.state.books}&key=AIzaSyCS4ROvsyMQFPbHWyf2w4iRLivX36cohSQ`
+      `https://www.googleapis.com/books/v1/volumes?q=${this.state.books}&key=${APIkey}`
     );
     // console.log(resp.json());
     const data = resp.data.items[0].volumeInfo;
