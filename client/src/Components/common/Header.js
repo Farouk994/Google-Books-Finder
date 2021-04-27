@@ -1,10 +1,11 @@
 import React from "react";
+// import "../../../src/"
 
 export const Header = () => {
   return (
     <div>
       <div align = "center">
-        <nav className="navbar navbar-dark bg-dark text-white" >
+        <nav className="navbar navbar-dark bg-dark "style={{ color : 'white'}} >
           <ul className="nav justify-content-center" >
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">

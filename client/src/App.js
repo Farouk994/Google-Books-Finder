@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Components/common/Header"
 import Home from "./Home";
-import Collection from "./Components/Users"
+import Collection from "./Components/Collection"
 import MyCollections from "./Components/myCollections"
 
 function App(){
